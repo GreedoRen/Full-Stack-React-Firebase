@@ -98,11 +98,11 @@ exports.uploadImage = (req, res) => {
 	let imageToBeUploaded = {};
 
 	busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
-		console.log(fieldname);
-		console.log(filename);
-		console.log(mimetype);
+		if (mimetype !== 'image/jpeg' && mimetype !== 'image/png') {
+			return res.status(400).json({ error: 'Wrong file type submitted' });
+		}
 		const imageExtension = filename.split('.')[filename.split('.').length - 1];
-		imageFileName = `${Math.round(Math.random() * 100000000)}${imageExtension}`;
+		imageFileName = `${Math.round(Math.random() * 100000000)}.${imageExtension}`;
 		const filePath = path.join(os.tmpdir(), imageFileName);
 		imageToBeUploaded = { filePath, mimetype };
 		file.pipe(fs.createWriteStream(filePath));
@@ -110,7 +110,8 @@ exports.uploadImage = (req, res) => {
 	busboy.on('finish', () => {
 		admin
 			.storage()
-			.bucket.upload(imageToBeUploaded.filePath, {
+			.bucket()
+			.upload(imageToBeUploaded.filePath, {
 				resumable: false,
 				metadata: {
 					metadata: {
@@ -130,4 +131,5 @@ exports.uploadImage = (req, res) => {
 				return res.status(500).json({ error: err.code });
 			});
 	});
+	busboy.end(req.rawBody);
 };
