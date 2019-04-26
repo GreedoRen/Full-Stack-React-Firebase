@@ -9,6 +9,15 @@ let db = {
 		}
 	],
 
+	comments: [
+		{
+			userHandle: 'user',
+			screamId: 'TugDq2BM6Rphiln2IFeD',
+			body: 'nice one man!',
+			createAt: '2019-04-24T11:57:56.647Z'
+ 		}
+	],
+
 	users: [
 		{
 			userID: 'fwjRjagTl4XsZIVW91SOLG7esrs2',
