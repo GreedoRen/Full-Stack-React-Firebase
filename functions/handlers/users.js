@@ -55,7 +55,7 @@ exports.signUp = (req, res) => {
 			if (err.code === 'auth/email-already-in-use') {
 				return res.status(400).json({ email: 'Email is alredy in use' });
 			} else {
-				return res.status(500).json({ error: err.code });
+				return res.status(500).json({ general: ' Something wrong. please try again' });
 			}
 		});
 };
