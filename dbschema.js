@@ -15,7 +15,18 @@ let db = {
 			screamId: 'TugDq2BM6Rphiln2IFeD',
 			body: 'nice one man!',
 			createAt: '2019-04-24T11:57:56.647Z'
- 		}
+		}
+	],
+
+	notifications: [
+		{
+			recipient: 'user',
+			sender: 'john',
+			read: 'true | false',
+			screamId: 'kdjsfgdksuufhgkdsufky',
+			type: 'like | comment',
+			createdAt: '2019-03-15T10:59:52.798Z'
+		}
 	],
 
 	users: [
