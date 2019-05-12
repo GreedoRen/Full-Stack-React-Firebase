@@ -205,7 +205,7 @@ exports.unlikeScream = (req, res) => {
 					});
 			}
 		})
-		.catch((error) => {
+		.catch((err) => {
 			console.error(err);
 			res.status(500).json({ error: err.code });
 		});

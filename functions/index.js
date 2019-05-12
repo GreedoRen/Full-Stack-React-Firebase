@@ -67,7 +67,7 @@ exports.createNotificationOnLike = functions.firestore.document('likes/{id}').on
 });
 
 exports.deleteNotificationOnUnlike = functions.firestore.document('likes/{id}').onDelete((snapshot) => {
-	return db.doc(`/notifications/${snapshot.id}`).delete().catch((error) => {
+	return db.doc(`/notifications/${snapshot.id}`).delete().catch((err) => {
 		console.error(err);
 	});
 });
